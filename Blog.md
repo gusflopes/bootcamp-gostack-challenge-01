@@ -22,4 +22,31 @@ For starting i did the following steps:
 
 Ok. Now I'm ready to really start coding.
 
-### Step 01
+### Step 01 - Basic Setupe
+- Import and use Express:
+```
+const express = require('express');
+const server = express();
+```
+- Use Json from Express: `server.use(express.json());`
+- Listen Port 3000: `server.listen(3000);`
+- Setting up the data (just an array for now): `const projects = [];`
+- Implementing the first route:
+```
+// List Projects
+server.get('/projects', (req, res) => {
+  return res.json(projects);
+});
+```
+
+Server is ready and replies for the GET Requisiton with an empty array.
+
+### Step 02 - Making the CRUD (just insights)
+
+#### Finding one Project inside Projects
+
+#### Adding or Deleting Project from array Projects
+
+### Setp 03 - Implementing the global Middleware
+
+### Setp 04 - Implementing the local Middleware for `id` verification

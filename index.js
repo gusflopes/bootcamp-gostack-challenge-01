@@ -50,7 +50,6 @@ server.post('/projects', (req, res) => {
 
 // List Projects
 server.get('/projects', (req, res) => {
-
   return res.json(projects);
 });
 
