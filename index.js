@@ -6,8 +6,7 @@ const projects = [];
 
 var  requestCounter = 0;
 
-//Global Middlewares
-
+//Global Middleware
 function logRequests(req, res, next) {
   requestCounter++;
 
@@ -16,19 +15,23 @@ function logRequests(req, res, next) {
   return next();
 }
 
+// Calling the Global Middleware on any route
 server.use(logRequests);
 
 // Internal Middlewares
 function verifyProjectId(req, res, next) {
+  const { id } = req.params;
+  const project = projects.find(p => p.id === id);
 
-  console.log('Verifying ProjectId.');
+  if (!project) {
+    return res.status(400).json({message: "Project doesn't exists."});
+  }
 
   return next();
 }
 
 
 // ROUTES
-
 // New Project
 server.post('/projects', (req, res) => {
   //Information needed 'id' and 'title'
